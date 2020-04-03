@@ -1,0 +1,53 @@
+diff --git a/c10/util/Half.h b/c10/util/Half.h
+index 338f271627..1e4a2e7be1 100644
+--- a/c10/util/Half.h
++++ b/c10/util/Half.h
+@@ -31,6 +31,7 @@
+ #include <limits>
+ #include <sstream>
+ #include <stdexcept>
++#include <stdint-gcc.h>
+ #include <string>
+ #include <utility>
+ 
+diff --git a/c10/util/llvmMathExtras.h b/c10/util/llvmMathExtras.h
+index 76ae3b26a2..a1422faf5d 100644
+--- a/c10/util/llvmMathExtras.h
++++ b/c10/util/llvmMathExtras.h
+@@ -19,6 +19,7 @@
+  #include <climits>
+  #include <cstring>
+  #include <limits>
++ #include <stdint-gcc.h>
+  #include <type_traits>
+ 
+  #ifdef __ANDROID_NDK__
+diff --git a/caffe2/utils/fixed_divisor.h b/caffe2/utils/fixed_divisor.h
+index 7cf7ebf248..4bdd81d870 100644
+--- a/caffe2/utils/fixed_divisor.h
++++ b/caffe2/utils/fixed_divisor.h
+@@ -4,6 +4,7 @@
+ #include <cstdint>
+ #include <cstdio>
+ #include <cstdlib>
++#include <stdint-gcc.h>
+ 
+ // See Note [hip-clang differences to hcc]
+ 
+diff --git a/c10/util/thread_name.cpp b/c10/util/thread_name.cpp
+index dfc7528dc2..fdc3c15e50 100644
+--- a/c10/util/thread_name.cpp
++++ b/c10/util/thread_name.cpp
+@@ -13,12 +13,6 @@
+ namespace c10 {
+ 
+ void setThreadName(std::string name) {
+-#ifdef C10_HAS_PTHREAD_SETNAME_NP
+-  constexpr size_t kMaxThreadName = 15;
+-  name.resize(std::min(name.size(), kMaxThreadName));
+-
+-  pthread_setname_np(pthread_self(), name.c_str());
+-#endif
+ }
+ 
+ } // namespace c10
