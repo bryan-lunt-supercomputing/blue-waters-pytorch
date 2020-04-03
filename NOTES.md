@@ -11,6 +11,14 @@ Cray XE/XK
 		https://www.techpowerup.com/gpu-specs/nvidia-gk110.g136
 
 
+## PATCH
+
+I created the patch from the diffs listed here:
+	https://github.com/spack/spack/pull/13588
+	Related: https://github.com/pytorch/pytorch/issues/23482
+
+
+
 ## cuDNN
 
 	https://developer.nvidia.com/rdp/cudnn-archive
@@ -32,3 +40,10 @@ Cray XE/XK
 	nccl_2.1.15-1+cuda9.1_x86_64.txz
 
 	This is from the "legacy / old / whatever" downloads.
+
+
+# Future
+	It would be nice to link more tightly to tuned libraries provided by the vendor.
+	https://bluewaters.ncsa.illinois.edu/libraries
+
+
