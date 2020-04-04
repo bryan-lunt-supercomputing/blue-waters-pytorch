@@ -66,4 +66,4 @@ fi
 
 #CC=gcc CXX=g++ MAX_JOBS=64 USE_CUDA=1 BUILD_CAFFE2_OPS=0 USE_SYSTEM_NCCL=1 USE_MKLDNN=1 MKLDNN_THREADING=OMP aprun -d ${PBS_NUM_PPN} python setup.py build --verbose #2>&1 > compilation_log.txt
 #BUILD_CAFFE2_OPS=0 USE_SYSTEM_NCCL=1 USE_CUDA=1 TORCH_CUDA_ARCH_LIST="3.5" USE_MKLDNN=1 MKLDNN_THREADING=OMP CC=gcc CXX=g++ MAX_JOBS=8 python setup.py build --verbose #2>&1 > compilation_log.txt
-${RUN_WRAPPER} python setup.py build --verbose #2>&1 > compilation_log.txt
+${RUN_WRAPPER} python setup.py install --verbose #2>&1 > compilation_log.txt
