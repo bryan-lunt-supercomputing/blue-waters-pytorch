@@ -46,4 +46,6 @@ I created the patch from the diffs listed here:
 	It would be nice to link more tightly to tuned libraries provided by the vendor.
 	https://bluewaters.ncsa.illinois.edu/libraries
 
+	It would be good to benchmark and choose the best communications library.
+	https://mlbench.github.io/2020/09/08/communication-backend-comparison/
 
