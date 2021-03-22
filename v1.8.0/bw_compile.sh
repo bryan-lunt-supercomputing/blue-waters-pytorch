@@ -5,7 +5,7 @@
 
 INSTALL_BASEDIR=/projects/eot/bbey/bjlunt2_installs
 INSTALL_CONDA_BASE=/projects/eot/bbey/bjlunt2_installs/miniconda3
-INSTALL_CONDA_ENV_NAME="torch141"
+INSTALL_CONDA_ENV_NAME="torch180"
 
 INSTALL_CONDA_ENV_PATH=${INSTALL_CONDA_BASE}/envs/${INSTALL_CONDA_ENV_NAME}
 
@@ -23,15 +23,19 @@ source activate ${INSTALL_CONDA_ENV_NAME}
 #TODO: compile/tune numpy/scipy to use the cray-libsci implementations of BLAS
 
 #conda install hdf5
-#conda install numpy ninja pyyaml mkl mkl-include setuptools cmake cffi
-#conda install -c pytorch magma-cuda90
+#conda install numpy ninja pyyaml mkl mkl-include setuptools cmake cffi typing_extensions future six requests dataclasses
+#conda install -c pytorch magma-cuda91
 #pip install wandb
 
 cd ${PYTORCH_SOURCE_DIR}
 
-#git checkout v1.4.0
+#git checkout v1.8.0
 #git submodule sync
 #git submodule update --init --recursive
+
+##### Tensorpipe is written against newer kernels and has trouble with the old 3.0 kernel. Thankfully, someone patched that.
+#cd third_party/tensorpipe
+#git pull origin master
 
 #TODO: Remember to apply patch
 # git apply ../blue-waters-pytorch/pt-bw.patch
@@ -59,8 +63,8 @@ export TORCH_CUDA_ARCH_LIST="3.5" #NVIDIA GK110 (K20X) "Kepler" GPUs on Blue Wat
 
 #export CUDNN_LIB_DIR="/projects/eot/bbcj/bjlunt2/src/cuda/lib64"
 #export CUDNN_INCLUDE_DIR="/projects/eot/bbcj/bjlunt2/src/cuda/include"
-export CUDNN_LIB_DIR=${INSTALL_CONDA_ENV_PATH}/lib
-export CUDNN_INCLUDE_DIR=${INSTALL_CONDA_ENV_PATH}/include
+export CUDNN_LIB_DIR=${INSTALL_CONDA_ENV_PATH}/cuda/lib64
+export CUDNN_INCLUDE_DIR=${INSTALL_CONDA_ENV_PATH}/cuda/include
 
 #CUDNN_INCLUDE_PATH
 
@@ -78,7 +82,8 @@ export NCCL_INCLUDE_DIR=${NCCL_ROOT}/include
 #Other Options
 #
 export BUILD_CAFFE2_OPS=0
-
+export USE_FBGEMM=0
+export USE_TENSORPIPE=0
 
 # Are we running on the headnode or in a PBS JOB on BW?
 if [[ -z "${PBS_JOBID}" ]]; then

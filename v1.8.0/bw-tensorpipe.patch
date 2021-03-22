@@ -1,0 +1,39 @@
+diff --git a/tensorpipe/common/system.cc b/tensorpipe/common/system.cc
+index d2bd388..914fc3d 100644
+--- a/tensorpipe/common/system.cc
++++ b/tensorpipe/common/system.cc
+@@ -262,7 +262,11 @@ optional<std::string> getPermittedCapabilitiesID() {
+ 
+ void setThreadName(std::string name) {
+ #ifdef __linux__
++  #ifdef _GNU_SOURCE
++  #if ((__GLIBC__ > 2) || ((__GLIBC__ == 2) && (__GLIBC_MINOR__ >= 12))) 
+   pthread_setname_np(pthread_self(), name.c_str());
++  #endif
++  #endif
+ #endif
+ }
+ 
+diff --git a/tensorpipe/util/shm/segment.cc b/tensorpipe/util/shm/segment.cc
+index e32c0b4..e268b1a 100644
+--- a/tensorpipe/util/shm/segment.cc
++++ b/tensorpipe/util/shm/segment.cc
+@@ -32,7 +32,10 @@ namespace {
+ constexpr const char* kBasePath = "/dev/shm";
+ 
+ std::tuple<Error, Fd> createShmFd() {
+-  int flags = O_TMPFILE | O_EXCL | O_RDWR | O_CLOEXEC;
++  int flags = O_EXCL | O_RDWR | O_CLOEXEC;
++  #ifdef O_TMPFILE
++	flags = flags | O_TMPFILE;
++  #endif
+   int fd = ::open(kBasePath, flags, 0);
+   if (fd < 0) {
+     return std::make_tuple(TP_CREATE_ERROR(SystemError, "open", errno), Fd());
+diff --git a/third_party/libuv b/third_party/libuv
+index 1dff88e..02a9e1b 160000
+--- a/third_party/libuv
++++ b/third_party/libuv
+@@ -1 +1 @@
+-Subproject commit 1dff88e5161cba5c59276d2070d2e304e4dcb242
++Subproject commit 02a9e1be252b623ee032a3137c0b0c94afbe6809
