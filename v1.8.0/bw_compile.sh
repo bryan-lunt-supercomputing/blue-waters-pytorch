@@ -17,6 +17,7 @@ PYTORCH_SOURCE_DIR=/projects/eot/bbey/bjlunt2_installs/src/pytorch
 #
 
 module load gcc/5.3.0 cmake/3.9.4 cudatoolkit/9.1.85_3.10-1.0502.df1cc54.3.1 cray-libsci/18.12.1 
+export PYTHONPATH=""
 source ${INSTALL_CONDA_BASE}/bin/activate
 source activate ${INSTALL_CONDA_ENV_NAME}
 
@@ -84,6 +85,13 @@ export NCCL_INCLUDE_DIR=${NCCL_ROOT}/include
 export BUILD_CAFFE2_OPS=0
 export USE_FBGEMM=0
 export USE_TENSORPIPE=0
+export USE_ONNX=0
+export ONNX_ML=0
+export BUILD_CAFFE2=0
+
+
+#### TODO: Fix this!!!
+export USE_DISTRIBUTED=0
 
 # Are we running on the headnode or in a PBS JOB on BW?
 if [[ -z "${PBS_JOBID}" ]]; then
