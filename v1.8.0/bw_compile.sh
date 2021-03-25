@@ -16,7 +16,8 @@ PYTORCH_SOURCE_DIR=/projects/eot/bbey/bjlunt2_installs/src/pytorch
 #Remember to get cuDNN and NCCL and those will get installed in the environment's include and lib paths.
 #
 
-module load gcc/5.3.0 cmake/3.9.4 cudatoolkit/9.1.85_3.10-1.0502.df1cc54.3.1 cray-libsci/18.12.1 
+#module load gcc/7.3.0 cmake/3.9.4 cudatoolkit/9.1.85_3.10-1.0502.df1cc54.3.1 cray-libsci/18.12.1 
+module load gcc/7.3.0 cmake/3.9.4 cray-libsci/18.12.1 
 export PYTHONPATH=""
 source ${INSTALL_CONDA_BASE}/bin/activate
 source activate ${INSTALL_CONDA_ENV_NAME}
@@ -59,7 +60,7 @@ export MKLDNN_THREADING=OMP
 #
 #OPTIONS FOR CUDA
 #
-export USE_CUDA=1
+export USE_CUDA=0
 export TORCH_CUDA_ARCH_LIST="3.5" #NVIDIA GK110 (K20X) "Kepler" GPUs on Blue Waters
 
 #export CUDNN_LIB_DIR="/projects/eot/bbcj/bjlunt2/src/cuda/lib64"

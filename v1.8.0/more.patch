@@ -1,0 +1,69 @@
+diff --git a/c10/util/thread_name.cpp b/c10/util/thread_name.cpp
+index c503df1124..dcfe0be77a 100644
+--- a/c10/util/thread_name.cpp
++++ b/c10/util/thread_name.cpp
+@@ -17,7 +17,7 @@ void setThreadName(std::string name) {
+   constexpr size_t kMaxThreadName = 15;
+   name.resize(std::min(name.size(), kMaxThreadName));
+ 
+-  pthread_setname_np(pthread_self(), name.c_str());
++//  pthread_setname_np(pthread_self(), name.c_str());
+ #endif
+ }
+ 
+diff --git a/third_party/XNNPACK b/third_party/XNNPACK
+index 55d53a4e70..383b0752fe 160000
+--- a/third_party/XNNPACK
++++ b/third_party/XNNPACK
+@@ -1 +1 @@
+-Subproject commit 55d53a4e7079d38e90acd75dd9e4f9e781d2da35
++Subproject commit 383b0752fe688a4697d763353d51c990fe65283a
+diff --git a/third_party/fbgemm b/third_party/fbgemm
+index 8ae350d3c1..9b0131179f 160000
+--- a/third_party/fbgemm
++++ b/third_party/fbgemm
+@@ -1 +1 @@
+-Subproject commit 8ae350d3c132761f2f70a32b90ab27c751130f89
++Subproject commit 9b0131179f293a645bfd3409cd66fa5eecc393b0
+diff --git a/third_party/foxi b/third_party/foxi
+index bd6feb6d0d..6a4e19a2aa 160000
+--- a/third_party/foxi
++++ b/third_party/foxi
+@@ -1 +1 @@
+-Subproject commit bd6feb6d0d3fc903df42b4feb82a602a5fcb1fd5
++Subproject commit 6a4e19a2aaf7ae4b9fa9597526e65b395d5e79ad
+diff --git a/third_party/gloo b/third_party/gloo
+index 285c37f74e..3dc0328fe6 160000
+--- a/third_party/gloo
++++ b/third_party/gloo
+@@ -1 +1 @@
+-Subproject commit 285c37f74e585920181d3dbce7aab33ddda8e495
++Subproject commit 3dc0328fe6a9d47bd47c0c6ca145a0d8a21845c6
+diff --git a/third_party/ideep b/third_party/ideep
+index e397a1f3dd..f0280bb805 160000
+--- a/third_party/ideep
++++ b/third_party/ideep
+@@ -1 +1 @@
+-Subproject commit e397a1f3ddd7748f5a896faf9607a3db57933081
++Subproject commit f0280bb805c2dedd4bb5dd4765cda7dfcd30989f
+diff --git a/third_party/kineto b/third_party/kineto
+index 868cf8117b..258d9a471f 160000
+--- a/third_party/kineto
++++ b/third_party/kineto
+@@ -1 +1 @@
+-Subproject commit 868cf8117b605ba3253ce079016a971b47178036
++Subproject commit 258d9a471f8d3a50a0f52b85c3fe0902f65489df
+diff --git a/third_party/pybind11 b/third_party/pybind11
+index 8de7772cc7..8e5d3d234e 160000
+--- a/third_party/pybind11
++++ b/third_party/pybind11
+@@ -1 +1 @@
+-Subproject commit 8de7772cc72daca8e947b79b83fea46214931604
++Subproject commit 8e5d3d234ef3bbd9efdbba865d1e606d4c5e97bb
+diff --git a/third_party/tensorpipe b/third_party/tensorpipe
+index a4849fd8bb..05467ba9bc 160000
+--- a/third_party/tensorpipe
++++ b/third_party/tensorpipe
+@@ -1 +1 @@
+-Subproject commit a4849fd8bbe22318bdfbb75f079ec81d8c868045
++Subproject commit 05467ba9bc164f06722986b615c4495901747c58
