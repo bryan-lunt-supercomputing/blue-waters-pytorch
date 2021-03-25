@@ -82,12 +82,16 @@ export NCCL_INCLUDE_DIR=${NCCL_ROOT}/include
 #
 #Other Options
 #
-export BUILD_CAFFE2_OPS=0
+export BUILD_CAFFE2=OFF
+export BUILD_CAFFE2_OPS=OFF
 export USE_FBGEMM=0
-export USE_TENSORPIPE=0
+
+export USE_TENSORPIPE=ON #They fixed tensorpipe for me. But we need to make sure we have the fixed version.
+export TP_ENABLE_SHM=OFF
+
 export USE_ONNX=0
 export ONNX_ML=0
-export BUILD_CAFFE2=0
+
 
 
 #### TODO: Fix this!!!
@@ -101,6 +105,7 @@ else
 	RUN_WRAPPER="aprun -d ${PBS_NUM_PPN} "
 	export MAX_JOBS=${PBS_NUM_PPN}
 fi
+
 
 #CC=gcc CXX=g++ MAX_JOBS=64 USE_CUDA=1 BUILD_CAFFE2_OPS=0 USE_SYSTEM_NCCL=1 USE_MKLDNN=1 MKLDNN_THREADING=OMP aprun -d ${PBS_NUM_PPN} python setup.py build --verbose #2>&1 > compilation_log.txt
 #BUILD_CAFFE2_OPS=0 USE_SYSTEM_NCCL=1 USE_CUDA=1 TORCH_CUDA_ARCH_LIST="3.5" USE_MKLDNN=1 MKLDNN_THREADING=OMP CC=gcc CXX=g++ MAX_JOBS=8 python setup.py build --verbose #2>&1 > compilation_log.txt
