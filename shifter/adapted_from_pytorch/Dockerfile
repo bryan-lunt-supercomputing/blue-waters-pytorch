@@ -5,7 +5,7 @@
 #
 #       If you do not use buildkit you are not going to have a good time
 #
-#       For reference: 
+#       For reference:
 #           https://docs.docker.com/develop/develop-images/build_enhancements/
 ARG BASE_IMAGE=ubuntu:16.04
 ARG PYTHON_VERSION=3.8
@@ -58,23 +58,20 @@ RUN /opt/conda/bin/conda install -c "${INSTALL_CHANNEL}" -y python=${PYTHON_VERS
     /opt/conda/bin/conda clean -ya
 RUN /opt/conda/bin/pip install torchelastic
 
-FROM ${BASE_IMAGE} as official
+FROM ${BASE_IMAGE} as release
 ARG PYTORCH_VERSION
 LABEL com.nvidia.volumes.needed="nvidia_driver"
 RUN --mount=type=cache,id=apt-final,target=/var/cache/apt \
     apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
+        mpich \
         libjpeg-dev \
         libpng-dev && \
     rm -rf /var/lib/apt/lists/*
-COPY --from=conda-installs /opt/conda /opt/conda
+COPY --from=build /opt/conda /opt/conda
 ENV PATH /opt/conda/bin:$PATH
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
 ENV PYTORCH_VERSION ${PYTORCH_VERSION}
 WORKDIR /workspace
-
-FROM official as dev
-# Should override the already installed version from the official-image stage
-COPY --from=build /opt/conda /opt/conda
