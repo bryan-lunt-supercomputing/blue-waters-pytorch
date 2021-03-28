@@ -19,7 +19,7 @@ RUN --mount=type=cache,id=apt-dev,target=/var/cache/apt \
         cmake \
         curl \
         git \
-        mpich \
+        mpich libmpich-dev \
         libjpeg-dev \
         libpng-dev && \
     rm -rf /var/lib/apt/lists/*
