@@ -44,6 +44,7 @@ COPY . .
 RUN git submodule update --init --recursive
 
 FROM conda as build
+ARG PYTORCH_BUILD_ENVARGS
 WORKDIR /opt/pytorch
 COPY --from=conda /opt/conda /opt/conda
 COPY --from=submodule-update /opt/pytorch /opt/pytorch

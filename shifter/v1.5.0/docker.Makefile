@@ -1,6 +1,6 @@
 DOCKER_REGISTRY           = docker.io
 DOCKER_ORG                = $(shell docker info 2>/dev/null | sed '/Username:/!d;s/.* //')
-DOCKER_IMAGE              = pytorch
+DOCKER_IMAGE              = bw-pytorch
 DOCKER_FULL_NAME          = $(DOCKER_REGISTRY)/$(DOCKER_ORG)/$(DOCKER_IMAGE)
 
 ifeq ("$(DOCKER_ORG)","")
@@ -12,6 +12,9 @@ CUDA_VERSION              = 9.1
 CUDNN_VERSION             = 7
 BASE_RUNTIME              = ubuntu:16.04
 BASE_DEVEL                = nvidia/cuda:$(CUDA_VERSION)-cudnn$(CUDNN_VERSION)-devel-ubuntu16.04
+
+#Additional build environment for building
+PYTORCH_BUILD_ENVARGS     = USE_MPI="ON" USE_MKLDNN="ON" MKLDNN_THREADING="OMP"
 
 # The conda channel to use to install pytorch / torchvision
 INSTALL_CHANNEL           = pytorch
