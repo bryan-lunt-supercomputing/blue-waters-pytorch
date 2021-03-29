@@ -13,4 +13,4 @@ cd ${PBS_O_WORKDIR}
 
 shifterimg pull luntlab/bw-pytorch:v1.5.0-devel
 
-aprun -b -- shifter --image=docker:luntlab/bw-pytorch:v1.5.0-devel --module=mpich -- python dist_mpi.py
+aprun -b -- shifter --image=docker:luntlab/bw-pytorch:v1.5.0-devel --module=mpich -- python ./dist_mpi.py

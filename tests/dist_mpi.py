@@ -32,14 +32,15 @@ def init_process(rank, size, fn, backend='gloo'):
     """ Initialize the distributed environment. """
     #os.environ['MASTER_ADDR'] = '127.0.0.1'
     #os.environ['MASTER_PORT'] = '29500'
-    dist.init_process_group(backend, rank=rank, world_size=size)
-    fn(rank, size)
+    dist.init_process_group(backend)
+    fn(dist.get_rank(), dist.get_world_size())
 
 
 if __name__ == "__main__":
     
     #TODO: Can we init without explicitly doing this here? This is becoming fragile.
-    my_rank = int(os.environ["PMI_RANK"])
-    my_size = int(os.environ["PMI_SIZE"])
-
-    init_process(my_rank, my_size, run, backend='mpi')
+    #my_rank = int(os.environ["PMI_RANK"])
+    #my_size = int(os.environ["PMI_SIZE"])
+    #init_process(my_rank, my_size, run, backend='mpi')
+    
+    init_process(None, None, run, backend='mpi')
