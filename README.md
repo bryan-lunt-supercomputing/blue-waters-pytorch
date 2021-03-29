@@ -14,11 +14,15 @@ https://hub.docker.com/repository/docker/luntlab/bw-pytorch/general
         Has MKL DNN support. etc.
     - v1.8.0
         Newest pytorch api (so far).
+        Compiled with MPI. (needs testing, probably works since the other one does).
         No CUDA (effectively, see below.)
-        May eventually have MPI support.
-        Trying to make MKL DNN work.
+        Has MKL DNN support. etc.
         
-        This image was compiled with cudatoolkit 10.2 . That will not work with the old nvidia drivers on BW. (At the time of this writing.) If they upgrade the driver (will never happen) it might start working. Compiling it in represents hope, I guess.
+        This image was compiled with cudatoolkit 10.2 .
+        That will not work with the old nvidia drivers on BW.
+        (At the time of this writing.)
+        If they upgrade the driver (will never happen) it might
+        start working. Compiling it in represents hope, I guess.
         
         
 
