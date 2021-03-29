@@ -9,8 +9,15 @@ if torch.cuda.is_available():
   torch.set_default_tensor_type('torch.cuda.FloatTensor')
 else:
   print("CUDA UN-Available")
+  
+if dist.is_mpi_available():
+  print("MPI Available")
+else:
+  print("MPI UN-Available")
 
 def run(rank, size):
+    print("Hello from rank {} of {}! ".format(rank,size))
+    
     tensor = torch.zeros(1)
     if rank == 0:
         tensor += 1
@@ -30,4 +37,9 @@ def init_process(rank, size, fn, backend='gloo'):
 
 
 if __name__ == "__main__":
-    init_process(0, 0, run, backend='mpi')
+    
+    #TODO: Can we init without explicitly doing this here? This is becoming fragile.
+    my_rank = int(os.environ["PMI_RANK"])
+    my_size = int(os.environ["PMI_SIZE"])
+
+    init_process(my_rank, my_size, run, backend='mpi')
