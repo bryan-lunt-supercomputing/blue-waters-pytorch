@@ -36,6 +36,7 @@ RUN curl -fsSL -v -o ~/miniconda.sh -O  https://repo.anaconda.com/miniconda/Mini
     /opt/conda/bin/conda install -y python=${PYTHON_VERSION} conda-build pyyaml numpy ipython typing_extensions && \
     /opt/conda/bin/conda install -y mkl mkl-include && \
     /opt/conda/bin/conda install -c pytorch -y magma-cuda91 && \
+    /opt/conda/bin/conda install -y mpi4py && \
     /opt/conda/bin/conda clean -ya
 
 FROM dev-base as submodule-update
