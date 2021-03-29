@@ -36,7 +36,6 @@ RUN curl -fsSL -v -o ~/miniconda.sh -O  https://repo.anaconda.com/miniconda/Mini
     /opt/conda/bin/conda install -y python=${PYTHON_VERSION} conda-build pyyaml numpy ipython typing_extensions && \
     /opt/conda/bin/conda install -y mkl mkl-include && \
     /opt/conda/bin/conda install -c pytorch -y magma-cuda91 && \
-    /opt/conda/bin/conda install -c conda-forge -y libgfortran=3.0 && \
     /opt/conda/bin/conda clean -ya
 
 FROM dev-base as submodule-update
@@ -61,7 +60,8 @@ LABEL com.nvidia.volumes.needed="nvidia_driver"
 RUN --mount=type=cache,id=apt-final,target=/var/cache/apt \
     apt-get update && apt-get install -y --no-install-recommends \
         ca-certificates \
-        mpich \
+        mpich libmpich-dev \
+        libgfortran3 \
         libjpeg-dev \
         libpng-dev && \
     rm -rf /var/lib/apt/lists/*
