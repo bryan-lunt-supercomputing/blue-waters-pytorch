@@ -11,6 +11,6 @@
 module load shifter
 cd ${PBS_O_WORKDIR}
 
-shifterimg pull luntlab/bw-pytorch:v1.5.0-devel
+shifterimg pull luntlab/bw-pytorch:v1.5.0
 
-aprun -b -n 2 -- shifter --image=docker:luntlab/bw-pytorch:v1.5.0-devel --module=mpich,gpu -- python ./dist_mpi.py
+aprun -b -n 2 -- shifter --image=docker:luntlab/bw-pytorch:v1.5.0 --module=mpich,gpu -- python ./dist_mpi.py

@@ -2,7 +2,7 @@
 #PBS -l nodes=01:ppn=16:xk
 #PBS -l walltime=02:00:00
 #PBS -l gres=shifter
-#PBS -v UDI=luntlab/bw-pytorch:v1.5.0-devel
+#PBS -v UDI=luntlab/bw-pytorch:v1.5.0
 ####PBS -N your_job_name
 ####PBS -e $PBS_JOBID.err
 ####PBS -o $PBS_JOBID.out
