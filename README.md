@@ -8,10 +8,15 @@ The easiest way, when the admins have Shifter working, is to use one of the imag
 https://hub.docker.com/repository/docker/luntlab/bw-pytorch/general
 
     - v1.5.0
-        Works with CUDA. May eventually have MPI support. Has MKL DNN support. etc.
+        Works with CUDA.
+        Works with MPI.
+        Does NOT do MPI and CUDA together. (yet)
+        Has MKL DNN support. etc.
     - v1.8.0
-        Newest pytorch api (so far). Cannot currently use CUDA, see below.
-        May eventually have MPI support. Trying to make MKL DNN work.
+        Newest pytorch api (so far).
+        No CUDA (effectively, see below.)
+        May eventually have MPI support.
+        Trying to make MKL DNN work.
         
         This image was compiled with cudatoolkit 10.2 . That will not work with the old nvidia drivers on BW. (At the time of this writing.) If they upgrade the driver (will never happen) it might start working. Compiling it in represents hope, I guess.
         
