@@ -33,3 +33,10 @@ https://hub.docker.com/repository/docker/luntlab/bw-pytorch/general
 
 - Currently only supports version 1.4.0 .
 - You have to manually install cudnn and nccl, unless they eventually make these packages for us.
+
+## Donations
+In addition to the time spent on this, I incur non-negligible EWS costs every time I rebuild the images.
+
+If you find this to be useful, please consider sending me a few dollars to offset my EWS costs.
+
+https://paypal.me/bryanjlunt?locale.x=en_US
