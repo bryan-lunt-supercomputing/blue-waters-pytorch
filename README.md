@@ -5,14 +5,18 @@ Building pytorch to use on Blue Waters.
 
 The easiest way, when the admins have Shifter working, is to use one of the images.
 
+- luntlab/bw-pytorch:v1.5.0
+- luntlab/bw-pytorch:v1.8.0
+
+
 https://hub.docker.com/repository/docker/luntlab/bw-pytorch/general
 
-    - v1.5.0 ( docker image: luntlab/bw-pytorch:v1.5.0 )
+    - v1.5.0
         Works with CUDA.
         Works with MPI.
         Does NOT do MPI and CUDA together. (yet)
         Has MKL DNN support. etc.
-    - v1.8.0 ( docker image: luntlab/bw-pytorch:v1.8.0 )
+    - v1.8.0
         Newest pytorch api (so far).
         Compiled with MPI. (needs testing, probably works since the other one does).
         No CUDA (effectively, see below.)
