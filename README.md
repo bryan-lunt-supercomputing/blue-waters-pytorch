@@ -14,7 +14,7 @@ https://hub.docker.com/repository/docker/luntlab/bw-pytorch/general
     - v1.5.0
         Works with CUDA.
         Works with MPI.
-        Does NOT do MPI and CUDA together. (This is a limitation in Shifter on BW. It may eventually be fixed.)
+        Does NOT do MPI and CUDA together. (No CUDA-Aware MPI on BW.)
         Has MKL DNN support. etc.
     - v1.8.0
         Newest pytorch api (so far).
