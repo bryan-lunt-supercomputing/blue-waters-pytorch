@@ -1,0 +1,22 @@
+FROM luntlab/bw-pytorch:v1.5.0
+MAINTAINER <bjlunt2@illinois.edu>
+
+RUN apt update && \
+	apt install -y git && \
+	rm -rf /var/lib/apt/lists/*
+RUN conda install -y ninja pillow libpng jpeg
+RUN cd /tmp/ && \
+	git clone https://github.com/pytorch/vision.git && \
+	cd vision && \
+	git checkout v0.6.0 && \
+	TORCH_CUDA_ARCH_LIST="3.5" FORCE_CUDA=1 PYTORCH_VERSION="1.5.0a0+4ff3872" python setup.py install && \
+	cd .. && \
+	rm -rf vision
+RUN conda install -y future && \
+	cd /tmp/ && \
+	git clone https://github.com/pytorch/text.git && \
+	cd text && \
+	git checkout 0.6.0 && \
+	TORCH_CUDA_ARCH_LIST="3.5" FORCE_CUDA=1 PYTORCH_VERSION="1.5.0a0+4ff3872" python setup.py install && \
+	cd .. && \
+	rm -rf text
