@@ -1,3 +1,9 @@
+# Blue Waters Pytorch installation and Docker containers
+
+    Blue Waters ended production at midnight at the end of Dec 31st, 2021.
+Most of this repo is about backporting pytorch, getting things to compile, and configurations specific to BW. It is no longer needed.
+Thus, I am archiving this repo. However, if you have an old machine and need pytorch for it, maybe this can help you get started.
+
 # blue-waters-pytorch
 Building pytorch to use on Blue Waters.
 
